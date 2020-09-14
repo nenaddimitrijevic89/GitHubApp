@@ -1,0 +1,25 @@
+@mixin logoPosition {
+    width: 35px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+.header{
+    background-color: orange;
+    width: 100%;
+    height: 50px;
+    margin: 0px 0px 20px 0px;
+    .logo{
+        @include logoPosition;
+    }
+    .link{
+        text-decoration: none;
+        color: black;
+        .back{
+            font-size: 30px;
+            @include logoPosition;
+        }
+    }
+}

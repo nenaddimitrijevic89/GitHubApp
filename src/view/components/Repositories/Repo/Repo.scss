@@ -1,0 +1,45 @@
+@mixin hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 6px 0px grey;
+}
+
+@mixin wordBreak{
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.cardRepo{
+    height: 90%;
+    width: 340px;
+    background-color: orange;
+    margin: 10px;
+    border-radius: 0 0 10px 10px;
+    &:hover{
+        @include hover;
+    }
+    .nameRepo{
+        @include wordBreak;
+        margin: 0px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: rgb(253, 124, 4);
+    }
+    .descrRepo{
+        @include wordBreak;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .infoRepo{
+        padding-left: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
+
+.height{
+    height: 100%;
+}

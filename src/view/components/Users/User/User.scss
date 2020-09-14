@@ -1,0 +1,49 @@
+@mixin hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 6px 0px grey;
+}
+
+$orangeDark: rgb(253, 124, 4); 
+$orangeLight: orange;
+
+.card{
+    background-color: $orangeLight;
+    margin: 10px;
+    border-radius: 0 0 10px 10px;
+    &:hover{
+        @include hover;
+    }
+    .name{
+        text-align: center;
+        padding: 20px 0px;
+        margin-top: 0px;
+    }
+    .cardImage{
+        width: 300px;
+    }
+    .cardInfo{
+        padding-left: 15px;
+        &:first-child{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            word-wrap: break-word;
+        }
+        &:last-child{
+            padding-bottom: 15px;
+            margin-top: 10px;
+            word-wrap: break-word;
+        }
+    }
+}
+
+.darkName{
+    background-color: $orangeDark;
+    text-align: center;
+    padding: 20px 0px;
+    margin-top: 0px;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
