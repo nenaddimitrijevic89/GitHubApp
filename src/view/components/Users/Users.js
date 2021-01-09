@@ -10,8 +10,8 @@ import { ErrorMsg } from '../ErrorMsg/ErrorMsg';
 import { ErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 
 class Users extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             users: [],
             searchedUser: '',

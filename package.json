@@ -1,5 +1,5 @@
 {
-  "homepage":"https://nenaddimitrijevic89.github.io/GitHubApp",
+  "homepage": "https://nenaddimitrijevic89.github.io/GitHubApp",
   "name": "github-app",
   "version": "0.1.0",
   "private": true,
@@ -13,8 +13,10 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-error-boundary": "^3.0.1",
+    "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "predeploy": "npm run build",
