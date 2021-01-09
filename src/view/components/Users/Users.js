@@ -10,15 +10,12 @@ import { ErrorMsg } from '../ErrorMsg/ErrorMsg';
 import { ErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 
 class Users extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
+        state = {
             users: [],
             searchedUser: '',
             isLoading: true,
             hasError: false
         }
-    }
 
     componentDidMount(){
         const oldUsers=storageService.get('users')
