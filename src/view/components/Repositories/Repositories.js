@@ -10,14 +10,11 @@ import { ErrorMsg } from '../ErrorMsg/ErrorMsg';
 import { ErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 
 class Repositories extends React.Component{
-    constructor(){
-        super();
-        this.state={
-            user: null,
-            repos: [],
-            isLoading: true,
-            hasError: false
-        }
+    state={
+        user: null,
+        repos: [],
+        isLoading: true,
+        hasError: false
     }
 
     componentDidMount(){
