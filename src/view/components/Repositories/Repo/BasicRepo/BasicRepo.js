@@ -3,7 +3,9 @@ import '../Repo.scss';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const BasicRepo = ({ userName, name, description, created }) =>{
+const BasicRepo = ({ userName, name, description, created }) => {
+    console.log(userName)
+    console.log(name)
     return(
         <Link to={`/repositories/${userName}/${name}`} target='_blank' className='link'>
             <div className='cardRepo'>
