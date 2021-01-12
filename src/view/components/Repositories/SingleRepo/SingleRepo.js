@@ -7,12 +7,9 @@ import { Repo } from '../Repo/Repo';
 import './SingleRepo.scss';
 
 class SingleRepo extends React.Component{
-    constructor(){
-        super()
-        this.state={
-            repo: null,
-            hasError: false
-        }
+    state={
+        repo: null,
+        hasError: false
     }
 
     componentDidMount(){
