@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { BasicUser } from './BasicUser/BasicUser';
 import { DetailedUser } from './DetailedUser/DetailedUser';
 
-const User = ({ avatar,name, bio, fullName, isDetailed }) => {
+const User = ({ avatar,name, bio, fullName, isDetailed, setId }) => {
     return(
         <>
             {isDetailed
@@ -19,6 +19,7 @@ const User = ({ avatar,name, bio, fullName, isDetailed }) => {
             :<BasicUser 
                 name={name}
                 avatar={avatar}
+                setId={setId}
             />
             }
         </>

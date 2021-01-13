@@ -1,8 +1,9 @@
-import * as actionTypes from './actions/actionTypes';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     users: null,
-    error: false
+    error: false,
+    userId: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,10 +19,18 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 error: true
             }
-            default:
-                return {
-                    ...state
-                }
+        case actionTypes.SEARCH_USERS:
+            return {
+                ...state,
+                users: action.users,
+                error: false
+            }
+        case actionTypes.SET_USER_ID:
+            return {
+                ...state,
+                userId: action.userId
+            }
+        default: return state;
     }
 }
 
