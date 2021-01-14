@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { BasicRepo } from './BasicRepo/BasicRepo';
 import { DetailedRepo } from './DetailedRepo/DetailedRepo';
 
-const Repo = ({ isDetailed, name, description, created, stargazers, watchers, forks, license, userName }) => {
+const Repo = ({ isDetailed, name, description, created, stargazers, watchers, forks, license, userName, setRepoId }) => {
     return(
         <>
         {isDetailed
@@ -24,6 +24,7 @@ const Repo = ({ isDetailed, name, description, created, stargazers, watchers, fo
             name={name}
             description={description}
             created={created}
+            setRepoId={setRepoId}
         />
         }
         </>

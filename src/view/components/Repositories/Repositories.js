@@ -2,39 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Repo } from './Repo/Repo';
-import { userService } from '../../../services/userService';
 import './Repositories.scss';
 import { User } from '../Users/User/User';
 import { Loader } from '../Loader/Loader';
 import { Header } from '../Header/Header';
 import { ErrorMsg } from '../ErrorMsg/ErrorMsg';
-import * as actions from '../../../store/actions/repos';
+import * as repoActions from '../../../store/actions/repos';
+import * as usersActions from '../../../store/actions/users';
 
 class Repositories extends React.Component{
-    state={
-        user: null,
-        isLoading: true
-    }
-
+   
     componentDidMount(){
-        userService.getUser(this.props.userId)
-        .then(response => this.setState({ user: response }))
-        .catch(() => this.setState({ hasError: true }))
-        .finally(() => this.setState({ isLoading: false }))
-
-        
+        this.props.onFetchSingleUser(this.props.userId);
         this.props.onFetchRepos(this.props.userId);
     }
 
     render(){
-        let userAndRepo = this.props.error ? <ErrorMsg /> : <Loader />;
+        let userAndRepo = (this.props.repError || this.props.userError) ? <ErrorMsg /> : <Loader />;
 
         let repos = null;
-        if(this.props.repos && this.state.user){
+        if(this.props.repos && this.props.singleUser){
             repos = (
                 this.props.repos.map(repo => 
                     <Repo
-                        userName={this.state.user.name}
+                        userName={this.props.singleUser.name}
                         isDetailed={false}
                         key={repo.id}
                         name={repo.name}
@@ -44,21 +35,21 @@ class Repositories extends React.Component{
                         watchers={repo.watchers}
                         forks={repo.forks}
                         license={repo.license}
+                        setRepoId={this.props.onSetSingleRepoId}
                     />
                 )
             )
         }
-        if(this.props.repos && this.state.user){
+        if(this.props.repos && this.props.singleUser){
             userAndRepo = (
                 <>
-                    <Header isMain={false}/>
+                    <Header isMain={false} resetId={this.props.onResetUserId}/>
                     <div className='containerRepo'>
-            
                         <User
-                            avatar={this.state.user.avatar}
-                            name={this.state.user.name}
-                            bio={this.state.user.bio}
-                            fullName={this.state.user.fullName}
+                            avatar={this.props.singleUser.avatar}
+                            name={this.props.singleUser.name}
+                            bio={this.props.singleUser.bio}
+                            fullName={this.props.singleUser.fullName}
                             isDetailed={true}
                         />
                     </div>
@@ -79,14 +70,19 @@ class Repositories extends React.Component{
 const mapStateToProps = state => {
     return {
         userId: state.users.userId,
+        singleUser: state.users.singleUser,
+        userError: state.users.error,
         repos: state.repos.repos,
-        error: state.repos.error
+        repError: state.repos.error
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchRepos: (id) => dispatch(actions.fetchRepos(id))
+        onFetchRepos: (id) => dispatch(repoActions.fetchRepos(id)),
+        onFetchSingleUser: (id) => dispatch(usersActions.fetchSingleUser(id)),
+        onResetUserId: () => dispatch(usersActions.resetUserId()),
+        onSetSingleRepoId: (id) => dispatch(repoActions.setSingleRepoId(id))
     };
 };
 

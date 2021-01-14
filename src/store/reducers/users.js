@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     users: null,
     error: false,
-    userId: null
+    userId: null,
+    singleUser: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +29,25 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_USER_ID:
             return {
                 ...state,
-                userId: action.userId
+                userId: action.userId,
+                error: false
+            }
+        case actionTypes.SET_SINGLE_USER:
+            return {
+                ...state,
+                singleUser: action.singleUser,
+                error: false
+            }
+        case actionTypes.FETCH_SINGLE_USER_FAILED:
+            return {
+                ...state,
+                error: true
+            }
+        case actionTypes.RESET_USER:
+            return {
+                ...state,
+                singleUser: null,
+                userId: null
             }
         default: return state;
     }

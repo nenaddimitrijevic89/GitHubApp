@@ -6,20 +6,20 @@ export const setUsers = (users) => {
     return {
         type: actionTypes.SET_USERS,
         users: users
-    }
+    };
 };
 
 export const setSearchedUsers = (users) => {
     return {
         type: actionTypes.SEARCH_USERS,
         users: users
-    }
+    };
 };
 
 export const fetchUsersFailed = () => {
     return {
         type: actionTypes.FETCH_USERS_FAILED
-    }
+    };
 };
 
 export const initUsers = () => {
@@ -54,9 +54,40 @@ export const searchUsers = (name) => {
     };
 };
 
-export const setUserId = (userId) => {
-    return{
+export const setUserId = (id) => {
+    return {
         type: actionTypes.SET_USER_ID,
-        userId: userId
+        userId: id
     };
 };
+
+export const resetUserId = () => {
+    return {
+        type: actionTypes.RESET_USER
+    };
+};
+
+export const setSingleUser = (user) => {
+    return {
+        type: actionTypes.SET_SINGLE_USER,
+        singleUser: user
+    };
+};
+
+export const fetchSingleUserFailed = () => {
+    return {
+        type: actionTypes.FETCH_SINGLE_USER_FAILED
+    };
+};
+
+export const fetchSingleUser = (id) => {
+    return dispatch => {
+        userService.getUser(id)
+        .then(response => {
+            dispatch(setSingleUser(response))
+        })
+        .catch(() => {
+            dispatch(fetchSingleUserFailed())
+        })
+    };
+}; 
