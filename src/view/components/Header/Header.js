@@ -4,7 +4,7 @@ import logo from '../../../images/logo.png'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Header = ({ isMain }) => {
+const Header = ({ isMain, resetId }) => {
     return(
         <div className='header'>
             {isMain
@@ -12,7 +12,7 @@ const Header = ({ isMain }) => {
                 <img className='logo' src={logo} alt='logo' />
             </div>
             :<div className='center'>
-                <Link to='/' className='link'><i className='fa fa-arrow-left back'></i></Link>
+                <Link to='/' className='link' onClick={() => resetId()}><i className='fa fa-arrow-left back'></i></Link>
             </div>
             }    
         </div>
@@ -20,7 +20,8 @@ const Header = ({ isMain }) => {
 }
 
 Header.propTypes = {
-    isMain: PropTypes.bool.isRequired
+    isMain: PropTypes.bool.isRequired,
+    resetId: PropTypes.func.isRequired
 }
 
 export { Header };
