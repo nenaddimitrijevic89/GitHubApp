@@ -1,7 +1,6 @@
 import React from 'react';
 import './Header.scss';
 import logo from '../../../images/logo.png'
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Header = ({ isMain, resetId }) => {
@@ -12,7 +11,9 @@ const Header = ({ isMain, resetId }) => {
                 <img className='logo' src={logo} alt='logo' />
             </div>
             :<div className='center'>
-                <Link to='/' className='link' onClick={() => resetId()}><i className='fa fa-arrow-left back'></i></Link>
+                <div className='link' onClick={() => { resetId(); window.history.back();}}>
+                    <i className='fa fa-arrow-left back'></i>
+                </div>
             </div>
             }    
         </div>

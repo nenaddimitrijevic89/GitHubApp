@@ -20,7 +20,7 @@ class SingleRepo extends React.Component{
         if(this.props.repo){
             repo = (
                 <>
-                    <Header isMain={true}/>
+                    <Header resetId={this.props.onResetSingleRepo}/>
                     <div className='containerSingleRepo'>
                         <Repo 
                             isDetailed={true}
@@ -56,7 +56,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchSingleRepo: (id) => dispatch(actions.fetchSingleRepo(id))
+        onFetchSingleRepo: (id) => dispatch(actions.fetchSingleRepo(id)),
+        onResetSingleRepo: () => dispatch(actions.resetSingleRepo())
     };
 };
 

@@ -32,6 +32,13 @@ const reducer = (state = initialState, action) => {
                 singleRepo: action.singleRepo,
                 error: false
             }
+        case actionTypes.RESET_SINGLE_REPO:
+            return {
+                ...state,
+                singleRepo: null,
+                singleRepoId: null,
+                error: false
+            }
         case actionTypes.FETCH_SINGLE_REPO_FAILED:
             return {
                 ...state,
