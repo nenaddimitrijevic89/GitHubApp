@@ -15,6 +15,12 @@ export const setSingleRepo = (repo) => {
     };
 };
 
+export const resetSingleRepo = () => {
+    return {
+        type: actionTypes.RESET_SINGLE_REPO
+    };
+};
+
 export const setSingleRepoId = (id) => {
     return {
         type: actionTypes.SET_SINGLE_REPO_ID,
